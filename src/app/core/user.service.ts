@@ -20,6 +20,10 @@ export class UserService {
   constructor(private storage: StorageService, private httpClient: HttpClient) {
   }
 
+  getProfile$(): Observable<IUser> {
+    return this.httpClient.get<IUser>(`${environment.apiUrl}/user/profile`);
+  }
+
   login$(userdata: {email: string, password: string}): Observable<IUser> {
     return this.httpClient
     .post<IUser>(`${environment.apiUrl}/login`, userdata, {withCredentials: true, observe: 'response'})

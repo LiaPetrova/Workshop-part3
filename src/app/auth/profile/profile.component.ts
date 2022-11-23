@@ -8,6 +8,8 @@ import { UserService } from 'src/app/core/user.service';
 })
 export class ProfileComponent implements OnInit {
 
+  isInEditMode: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
