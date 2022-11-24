@@ -21,7 +21,9 @@ export class UserService {
   }
 
   getProfile$(): Observable<IUser> {
-    return this.httpClient.get<IUser>(`${environment.apiUrl}/user/profile`);
+    return this.httpClient
+    .get<IUser>(`${environment.apiUrl}/users/profile`, { withCredentials: true })
+    .pipe(tap(user => this.currentUser = user));
   }
 
   login$(userdata: {email: string, password: string}): Observable<IUser> {
